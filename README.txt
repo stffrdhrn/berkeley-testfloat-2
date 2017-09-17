@@ -4,6 +4,8 @@ Package Overview for Berkeley TestFloat Release 2c
 John R. Hauser
 2015 January 30
 
+Modified by Stafford Horne to fix gcc warnings and use with testing of GDB
+sim fpu.
 
 ----------------------------------------------------------------------------
 Overview
