@@ -7,6 +7,29 @@ John R. Hauser
 Modified by Stafford Horne to fix gcc warnings and use with testing of GDB
 sim fpu.
 
+Note! I have not ported the windows assembly to linux, as I don't use it.
+This means that running `testfloat` will crash trying test set the rounding
+mode of your FPU.
+
+To build this you will also need softfloat, please use my version at:
+https://github.com/stffrdhrn/berkeley-softfloat-2
+
+Original Work: http://www.jhauser.us/arithmetic/TestFloat.html
+
+Recommended way to build:
+  git clone https://github.com/stffrdhrn/berkeley-softfloat-2.git
+  cd berkeley-testfloat-2
+  # edit Make file as needed
+  make
+  cd ..
+
+  git clone https://github.com/stffrdhrn/berkeley-testfloat-2.git
+  cd berkeley-testfloat-2
+  # edit Make file as needed
+  make
+  # run tests with
+  ./testsoftfloat -all
+
 ----------------------------------------------------------------------------
 Overview
 
