@@ -7,8 +7,8 @@ John R. Hauser
 Modified by Stafford Horne to fix gcc warnings and use with testing of GDB
 sim fpu.
 
-Note! I have not ported the windows assembly to linux, as I don't use it.
-This means that running `testfloat` will crash trying test set the rounding
+Note! I have not ported the windows assembly to linux as I don't use it.
+This means that running `testfloat` will crash trying to set the rounding
 mode of your FPU.
 
 To build this you will also need softfloat, please use my version at:
