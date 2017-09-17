@@ -43,6 +43,7 @@ static void catchSIGINT( int signalCode )
 
 }
 
+int
 main( int argc, char **argv )
 {
     char *argPtr;

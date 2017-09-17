@@ -1,4 +1,5 @@
 *.o
-*.ce
-*.he
-*.Se
+tags
+cscope.out
+testsoftfloat
+testfloat

@@ -331,7 +331,6 @@ static int32 floatXToInt32( floatX ax )
 
 static floatX int64ToFloatX( int64 a )
 {
-    uint64 absA;
     floatX ax;
 
     ax.isNaN = FALSE;
@@ -443,7 +442,7 @@ static float32 floatXToFloat32( floatX zx )
     floatX savedZ;
     flag isTiny;
     int32 expField;
-    float32 z;
+    float32 z = 0;
 
     if ( zx.isZero ) return zx.sign ? 0x80000000 : 0;
     if ( zx.isInf ) return zx.sign ? 0xFF800000 : 0x7F800000;
@@ -563,7 +562,7 @@ static float64 floatXToFloat64( floatX zx )
     floatX savedZ;
     flag isTiny;
     int32 expField;
-    float64 z;
+    float64 z = 0;
 
     if ( zx.isZero ) return zx.sign ? LIT64( 0x8000000000000000 ) : 0;
     if ( zx.isInf ) {

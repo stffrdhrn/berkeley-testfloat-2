@@ -573,7 +573,7 @@ static void
  testFunctionVariety(
      uint8 functionCode, int8 roundingPrecision, int8 roundingMode )
 {
-    uint8 roundingCode;
+    uint8 roundingCode = 0;
 
     functionName = functions[ functionCode ].name;
 #ifdef FLOATX80

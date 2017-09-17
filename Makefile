@@ -7,13 +7,14 @@ VPATH = ./include/$(ARCH):$(SOFTFLOAT_DIR)/include/$(ARCH)
 OBJ = .o
 # When on windows
 #EXE = .exe
+CC = gcc
 INCLUDES = -I. -I./include/$(ARCH) \
 	-I$(SOFTFLOAT_DIR) \
 	-I$(SOFTFLOAT_DIR)/include/$(ARCH)
-COMPILE_ASM = gcc -c -o $@
-COMPILE_C = gcc -c -o $@ $(INCLUDES) -O2
-COMPILE_SLOWFLOAT_C = gcc -c -o $@ $(INCLUDES) -I- -O3
-LINK = gcc -o $@
+CFLAGS = $(INCLUDES) -O2 -Wall -Werror
+COMPILE_ASM = $(CC) -c -o $@
+COMPILE_C = $(CC) -c -o $@ $(CFLAGS)
+LINK = $(CC) -o $@
 
 SOFTFLOAT_OBJ = $(SOFTFLOAT_DIR)/softfloat$(OBJ)
 
@@ -35,7 +36,7 @@ testLoops$(OBJ): milieu.h $(SOFTFLOAT_H) testCases.h writeHex.h testLoops.h test
 	$(COMPILE_C) testLoops.c
 
 slowfloat$(OBJ): milieu.h $(SOFTFLOAT_H) slowfloat.h slowfloat-32.c slowfloat-64.c slowfloat.c
-	$(COMPILE_SLOWFLOAT_C) slowfloat.c
+	$(COMPILE_C) slowfloat.c
 
 testsoftfloat$(OBJ): milieu.h fail.h $(SOFTFLOAT_H) testCases.h testLoops.h slowfloat.h testsoftfloat.c
 	$(COMPILE_C) testsoftfloat.c
@@ -49,8 +50,9 @@ systmodes$(OBJ): systmodes.S
 systflags$(OBJ): systflags.S
 	$(COMPILE_ASM) ./include/$(ARCH)/systflags.S
 
+# compile systfloat ingnoring warnings of type punning
 systfloat$(OBJ): systfloat.c
-	$(COMPILE_C) systfloat.c
+	$(CC) -c $(INCLUDES) -O2 -o $@ systfloat.c
 
 testFunction$(OBJ): milieu.h $(SOFTFLOAT_H) testCases.h testLoops.h systmodes.h systflags.h systfloat.h testFunction.h testFunction.c
 	$(COMPILE_C) testFunction.c

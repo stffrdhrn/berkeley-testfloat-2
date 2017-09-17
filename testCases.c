@@ -1138,6 +1138,7 @@ static float32 float32Random( void )
         return float32RandomQInfPInf();
     }
 
+    return 0;
 }
 
 #ifdef BITS64
@@ -1713,6 +1714,7 @@ static float64 float64Random( void )
         return float64RandomQInfPInf();
     }
 
+    return 0;
 }
 
 #ifdef FLOATX80
@@ -2266,7 +2268,7 @@ static floatx80 floatx80RandomQInfP3( void )
         & LIT64( 0x7FFFFFFFFFFFFFFF );
     weightMaskNum = randomUint8() % floatx80NumQInfWeightMasks;
     z.high =
-          randomUint16() & floatx80QInfWeightMasks[ weightMaskNum ]
+          (randomUint16() & floatx80QInfWeightMasks[ weightMaskNum ])
         + floatx80QInfWeightOffsets[ weightMaskNum ];
     if ( z.high ) z.low |= LIT64( 0x8000000000000000 );
     z.high |= ( (uint16) ( randomUint8() & 1 ) )<<15;
@@ -2282,7 +2284,7 @@ static floatx80 floatx80RandomQInfPInf( void )
     z.low = randomUint64() & LIT64( 0x7FFFFFFFFFFFFFFF );
     weightMaskNum = randomUint8() % floatx80NumQInfWeightMasks;
     z.high =
-          randomUint16() & floatx80QInfWeightMasks[ weightMaskNum ]
+          (randomUint16() & floatx80QInfWeightMasks[ weightMaskNum ])
         + floatx80QInfWeightOffsets[ weightMaskNum ];
     if ( z.high ) z.low |= LIT64( 0x8000000000000000 );
     z.high |= ( (uint16) ( randomUint8() & 1 ) )<<15;
@@ -2292,6 +2294,7 @@ static floatx80 floatx80RandomQInfPInf( void )
 
 static floatx80 floatx80Random( void )
 {
+    floatx80 ret = {0, 0};
 
     switch ( randomUint8() & 7 ) {
      case 0:
@@ -2308,6 +2311,7 @@ static floatx80 floatx80Random( void )
         return floatx80RandomQInfPInf();
     }
 
+    return ret;
 }
 
 #endif
@@ -3104,6 +3108,7 @@ static float128 float128RandomQInfPInf( void )
 
 static float128 float128Random( void )
 {
+    float128 ret = {0, 0};
 
     switch ( randomUint8() & 7 ) {
      case 0:
@@ -3120,6 +3125,7 @@ static float128 float128Random( void )
         return float128RandomQInfPInf();
     }
 
+    return ret;
 }
 
 #endif
