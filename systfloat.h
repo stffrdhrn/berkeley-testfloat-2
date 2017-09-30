@@ -43,6 +43,8 @@ This has been modified to work as needed by Stafford Horne.
 #define SYST_FLOAT32_SUB
 #define SYST_FLOAT32_MUL
 #define SYST_FLOAT32_DIV
+#define SYST_FLOAT32_REM
+#define SYST_FLOAT64_REM
 #define SYST_FLOAT32_EQ
 #define SYST_FLOAT32_LE
 #define SYST_FLOAT32_LT

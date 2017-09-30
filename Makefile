@@ -11,7 +11,7 @@ CC = gcc
 INCLUDES = -I. -I./include/$(ARCH) \
 	-I$(SOFTFLOAT_DIR) \
 	-I$(SOFTFLOAT_DIR)/include/$(ARCH)
-CFLAGS = $(INCLUDES) -O2 -Wall -Werror
+CFLAGS = $(INCLUDES) -g -O2 -Wall -Werror
 COMPILE_ASM = $(CC) -c -o $@
 COMPILE_C = $(CC) -c -o $@ $(CFLAGS)
 LINK = $(CC) -o $@
