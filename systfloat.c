@@ -210,6 +210,15 @@ float32 syst_float32_div( float32 a, float32 b )
 
 }
 
+float32 syst_float32_rem( float32 a, float32 b )
+{
+    float32 z;
+
+    *( (float *) &z ) = remainderf( *( (float *) &a ), *( (float *) &b ) );
+    return z;
+
+}
+
 flag syst_float32_eq( float32 a, float32 b )
 {
 
@@ -316,6 +325,15 @@ float64 syst_float64_div( float64 a, float64 b )
     float64 z;
 
     *( (double *) &z ) = *( (double *) &a ) / *( (double *) &b );
+    return z;
+
+}
+
+float64 syst_float64_rem( float64 a, float64 b )
+{
+    float64 z;
+
+    *( (double *) &z ) = remainder( *( (double *) &a ), *( (double *) &b ) );
     return z;
 
 }

@@ -1,5 +1,5 @@
 
-ARCH = 386-Win32-GCC
+ARCH = x86-gcc
 SOFTFLOAT_DIR = ../berkeley-softfloat-2
 
 VPATH = ./include/$(ARCH):$(SOFTFLOAT_DIR)/include/$(ARCH)
